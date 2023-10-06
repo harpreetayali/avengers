@@ -17,6 +17,12 @@
 		103F7D672ACF164000BD7C8C /* AvengersUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F7D662ACF164000BD7C8C /* AvengersUITestsLaunchTests.swift */; };
 		103F7D772ACF18CC00BD7C8C /* ComicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F7D762ACF18CC00BD7C8C /* ComicsViewController.swift */; };
 		103F7D7C2ACF199800BD7C8C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F7D7B2ACF199800BD7C8C /* APIService.swift */; };
+		103F7D7E2ACFBFE200BD7C8C /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F7D7D2ACFBFE200BD7C8C /* APIEndpoints.swift */; };
+		103F7D802ACFD0C400BD7C8C /* CharactersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F7D7F2ACFD0C400BD7C8C /* CharactersViewModel.swift */; };
+		103F7D822ACFD37C00BD7C8C /* CharactersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F7D812ACFD37C00BD7C8C /* CharactersModel.swift */; };
+		103F7D852ACFDDE500BD7C8C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F7D842ACFDDE500BD7C8C /* Constants.swift */; };
+		103F7D872ACFE2A400BD7C8C /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F7D862ACFE2A400BD7C8C /* Encryption.swift */; };
+		103F7D8A2AD0285E00BD7C8C /* CharacterCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F7D892AD0285E00BD7C8C /* CharacterCollectionCell.swift */; };
 		D625C9A2D3C81F063733BE7B /* Pods_Avengers_AvengersUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7185D310D6388E7937CDAE7 /* Pods_Avengers_AvengersUITests.framework */; };
 		E8CF5B845CBBC79A0E64EFC0 /* Pods_Avengers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 609A8B7F0C9CCD6DD71459CA /* Pods_Avengers.framework */; };
 		EFFFD0A2E0D3A03835B2CE76 /* Pods_AvengersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82B7F03F953AF15E74730DF6 /* Pods_AvengersTests.framework */; };
@@ -54,6 +60,12 @@
 		103F7D662ACF164000BD7C8C /* AvengersUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvengersUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		103F7D762ACF18CC00BD7C8C /* ComicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsViewController.swift; sourceTree = "<group>"; };
 		103F7D7B2ACF199800BD7C8C /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		103F7D7D2ACFBFE200BD7C8C /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
+		103F7D7F2ACFD0C400BD7C8C /* CharactersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModel.swift; sourceTree = "<group>"; };
+		103F7D812ACFD37C00BD7C8C /* CharactersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersModel.swift; sourceTree = "<group>"; };
+		103F7D842ACFDDE500BD7C8C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		103F7D862ACFE2A400BD7C8C /* Encryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
+		103F7D892AD0285E00BD7C8C /* CharacterCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionCell.swift; sourceTree = "<group>"; };
 		12FB65E6C5DDECBF3D75A28A /* Pods-Avengers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avengers.debug.xcconfig"; path = "Target Support Files/Pods-Avengers/Pods-Avengers.debug.xcconfig"; sourceTree = "<group>"; };
 		3450B7A35BFB9B02102313E6 /* Pods-Avengers-AvengersUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avengers-AvengersUITests.debug.xcconfig"; path = "Target Support Files/Pods-Avengers-AvengersUITests/Pods-Avengers-AvengersUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		609A8B7F0C9CCD6DD71459CA /* Pods_Avengers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Avengers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +130,7 @@
 		103F7D422ACF163E00BD7C8C /* Avengers */ = {
 			isa = PBXGroup;
 			children = (
+				103F7D832ACFDDD500BD7C8C /* Utils */,
 				103F7D7A2ACF194500BD7C8C /* API Service */,
 				103F7D792ACF193900BD7C8C /* Storyboards */,
 				103F7D782ACF192F00BD7C8C /* Delegates */,
@@ -157,7 +170,10 @@
 		103F7D742ACF18A800BD7C8C /* Characters */ = {
 			isa = PBXGroup;
 			children = (
+				103F7D882AD0283400BD7C8C /* Character Collection Cell */,
 				103F7D472ACF163E00BD7C8C /* CharactersViewController.swift */,
+				103F7D7F2ACFD0C400BD7C8C /* CharactersViewModel.swift */,
+				103F7D812ACFD37C00BD7C8C /* CharactersModel.swift */,
 			);
 			path = Characters;
 			sourceTree = "<group>";
@@ -191,8 +207,26 @@
 			isa = PBXGroup;
 			children = (
 				103F7D7B2ACF199800BD7C8C /* APIService.swift */,
+				103F7D7D2ACFBFE200BD7C8C /* APIEndpoints.swift */,
 			);
 			path = "API Service";
+			sourceTree = "<group>";
+		};
+		103F7D832ACFDDD500BD7C8C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				103F7D842ACFDDE500BD7C8C /* Constants.swift */,
+				103F7D862ACFE2A400BD7C8C /* Encryption.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		103F7D882AD0283400BD7C8C /* Character Collection Cell */ = {
+			isa = PBXGroup;
+			children = (
+				103F7D892AD0285E00BD7C8C /* CharacterCollectionCell.swift */,
+			);
+			path = "Character Collection Cell";
 			sourceTree = "<group>";
 		};
 		BD935429848CF1CA488C80B4 /* Pods */ = {
@@ -205,7 +239,6 @@
 				B47F99E660692EB4B53462AC /* Pods-AvengersTests.debug.xcconfig */,
 				BD59A2DDBED04DC5028C9837 /* Pods-AvengersTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -458,10 +491,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				103F7D802ACFD0C400BD7C8C /* CharactersViewModel.swift in Sources */,
+				103F7D7E2ACFBFE200BD7C8C /* APIEndpoints.swift in Sources */,
+				103F7D822ACFD37C00BD7C8C /* CharactersModel.swift in Sources */,
+				103F7D872ACFE2A400BD7C8C /* Encryption.swift in Sources */,
 				103F7D772ACF18CC00BD7C8C /* ComicsViewController.swift in Sources */,
 				103F7D482ACF163E00BD7C8C /* CharactersViewController.swift in Sources */,
 				103F7D7C2ACF199800BD7C8C /* APIService.swift in Sources */,
+				103F7D8A2AD0285E00BD7C8C /* CharacterCollectionCell.swift in Sources */,
 				103F7D442ACF163E00BD7C8C /* AppDelegate.swift in Sources */,
+				103F7D852ACFDDE500BD7C8C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,6 +684,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 48P68MQAH7;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Avengers/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -652,6 +692,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -674,6 +715,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 48P68MQAH7;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Avengers/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -681,6 +723,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -7,7 +7,9 @@ target 'Avengers' do
 
   # Pods for Avengers
   pod 'Alamofire'
-
+  pod 'SDWebImage'
+  pod 'IQKeyboardManagerSwift'
+  
   target 'AvengersTests' do
     inherit! :search_paths
     # Pods for testing
