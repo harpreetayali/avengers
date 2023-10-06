@@ -223,6 +223,11 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Comics" image="book.fill" catalog="system" id="6rV-P1-ftn"/>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="MzE-wN-dmC" id="IIs-W8-TO2"/>
+                        <outlet property="comicsCollectionView" destination="RQr-nu-bPs" id="GBJ-SR-sul"/>
+                        <outlet property="paginationIndicator" destination="ENQ-A1-7HM" id="s5F-h9-oWw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qhh-nq-RuP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

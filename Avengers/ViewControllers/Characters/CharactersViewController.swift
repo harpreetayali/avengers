@@ -99,6 +99,7 @@ class CharactersViewController: UIViewController {
     
     
 }
+//MARK: Characters Collection View
 extension CharactersViewController:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -142,6 +143,7 @@ extension CharactersViewController:UICollectionViewDelegate,UICollectionViewData
     
 }
 
+//MARK: Search Bar
 extension CharactersViewController:UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty{
@@ -159,6 +161,7 @@ extension CharactersViewController:UISearchBarDelegate{
     }
 }
 
+//MARK: History Table View
 extension CharactersViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchHistory?.count ?? 0

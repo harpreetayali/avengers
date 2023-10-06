@@ -14,11 +14,14 @@ enum APIEndpoint{
     }
     
     case characteresList
+    case comicsList
     
     var url:String{
         switch self {
         case .characteresList:
             return "\(baseUrl)v1/public/characters"
+        case .comicsList:
+            return "\(baseUrl)v1/public/comics"
         }
     }
 }
