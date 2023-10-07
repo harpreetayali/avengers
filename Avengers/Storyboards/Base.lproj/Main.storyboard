@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -148,7 +149,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RQr-nu-bPs">
-                                <rect key="frame" x="0.0" y="59" width="393" height="690"/>
+                                <rect key="frame" x="0.0" y="113.33333333333331" width="393" height="635.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="teH-BC-Aer">
                                     <size key="itemSize" width="128" height="128"/>
@@ -170,7 +171,7 @@
                                                         <constraint firstAttribute="height" constant="100" id="Jpe-Sx-FTH"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBs-18-DXS">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBs-18-DXS">
                                                     <rect key="frame" x="10" y="118" width="108" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -205,17 +206,163 @@
                                     <constraint firstAttribute="height" constant="20" id="hkV-eC-VWX"/>
                                 </constraints>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6z-cE-Eat">
+                                <rect key="frame" x="311" y="69" width="62" height="34.333333333333343"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Filter"/>
+                                <connections>
+                                    <action selector="tapFilterButton:" destination="wRr-OH-cPF" eventType="touchUpInside" id="Hcc-NZ-vpr"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddt-cD-M5N">
+                                <rect key="frame" x="223" y="105.33333333333331" width="150" height="107"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="83B-tE-Vjc">
+                                        <rect key="frame" x="5" y="5" width="140" height="97"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="f1o-IN-fHZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="140" height="16"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dqz-Q1-uI1">
+                                                        <rect key="frame" x="0.0" y="0.99999999999999822" width="16" height="14.666666666666668"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="16" id="H1u-5G-mOr"/>
+                                                            <constraint firstAttribute="height" constant="16" id="pux-Nb-7D4"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TP0-zo-Vbr">
+                                                        <rect key="frame" x="21" y="0.0" width="119" height="16"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <state key="normal" title="Release this week">
+                                                            <color key="titleColor" name="AccentColor"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="tappedFilterType:" destination="wRr-OH-cPF" eventType="touchUpInside" id="cjY-Ug-Ulr"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lWG-Fk-T3B">
+                                                <rect key="frame" x="0.0" y="21.000000000000014" width="140" height="1"/>
+                                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="mq6-m4-pNZ"/>
+                                                </constraints>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dzm-SE-H8z">
+                                                <rect key="frame" x="0.0" y="27.000000000000014" width="140" height="16"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zZO-dV-UvW">
+                                                        <rect key="frame" x="0.0" y="0.99999999999999822" width="16" height="14.666666666666668"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="16" id="Zu5-ps-4CU"/>
+                                                            <constraint firstAttribute="width" constant="16" id="fRR-bx-b9t"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctm-4r-LBv">
+                                                        <rect key="frame" x="21" y="0.0" width="119" height="16"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="50" maxY="0.0"/>
+                                                        <state key="normal" title="Release last week">
+                                                            <color key="titleColor" name="AccentColor"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="tappedFilterType:" destination="wRr-OH-cPF" eventType="touchUpInside" id="EDd-YW-YZ2"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vaI-IB-dam">
+                                                <rect key="frame" x="0.0" y="48.000000000000014" width="140" height="1"/>
+                                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="kKj-ht-6aV"/>
+                                                </constraints>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="7Xc-g7-bVf">
+                                                <rect key="frame" x="0.0" y="54.000000000000014" width="140" height="16"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Avi-4c-MJ5">
+                                                        <rect key="frame" x="0.0" y="0.99999999999999822" width="16" height="14.666666666666668"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="16" id="6zj-mC-jSx"/>
+                                                            <constraint firstAttribute="width" constant="16" id="ecl-Xz-JPA"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DIE-QR-WZ2">
+                                                        <rect key="frame" x="21" y="0.0" width="119" height="16"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
+                                                        <state key="normal" title="Release next week">
+                                                            <color key="titleColor" name="AccentColor"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="tappedFilterType:" destination="wRr-OH-cPF" eventType="touchUpInside" id="qKE-6N-TWM"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bch-6q-66y">
+                                                <rect key="frame" x="0.0" y="75.000000000000014" width="140" height="1"/>
+                                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="KJc-SJ-Us6"/>
+                                                </constraints>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ge5-rP-427">
+                                                <rect key="frame" x="0.0" y="81.000000000000014" width="140" height="16"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vxT-OO-oW0">
+                                                        <rect key="frame" x="0.0" y="0.99999999999999822" width="16" height="14.666666666666668"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="16" id="Glq-DV-xp2"/>
+                                                            <constraint firstAttribute="width" constant="16" id="sXz-nU-MZl"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aY5-eg-dhG">
+                                                        <rect key="frame" x="21" y="0.0" width="119" height="16"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
+                                                        <state key="normal" title="Release this month">
+                                                            <color key="titleColor" name="AccentColor"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="tappedFilterType:" destination="wRr-OH-cPF" eventType="touchUpInside" id="4EK-aE-LAW"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="140" id="Hnr-dT-ptg"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="83B-tE-Vjc" secondAttribute="bottom" constant="5" id="Ci9-R7-Ffe"/>
+                                    <constraint firstItem="83B-tE-Vjc" firstAttribute="leading" secondItem="ddt-cD-M5N" secondAttribute="leading" constant="5" id="MU2-h3-fYb"/>
+                                    <constraint firstAttribute="trailing" secondItem="83B-tE-Vjc" secondAttribute="trailing" constant="5" id="cnb-LH-Zan"/>
+                                    <constraint firstItem="83B-tE-Vjc" firstAttribute="top" secondItem="ddt-cD-M5N" secondAttribute="top" constant="5" id="m5X-EI-LwQ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZL5-Vz-yaF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ENQ-A1-7HM" firstAttribute="leading" secondItem="ZL5-Vz-yaF" secondAttribute="leading" id="1dS-dt-wPK"/>
                             <constraint firstItem="MzE-wN-dmC" firstAttribute="top" secondItem="ZL5-Vz-yaF" secondAttribute="top" id="4Fh-Wj-Yak"/>
-                            <constraint firstItem="RQr-nu-bPs" firstAttribute="top" secondItem="ZL5-Vz-yaF" secondAttribute="top" id="6Mg-wF-EYw"/>
                             <constraint firstItem="RQr-nu-bPs" firstAttribute="trailing" secondItem="ZL5-Vz-yaF" secondAttribute="trailing" id="AhY-A0-sMy"/>
+                            <constraint firstItem="q6z-cE-Eat" firstAttribute="top" secondItem="ZL5-Vz-yaF" secondAttribute="top" constant="10" id="As0-ce-cNg"/>
+                            <constraint firstItem="ddt-cD-M5N" firstAttribute="trailing" secondItem="q6z-cE-Eat" secondAttribute="trailing" id="H9Z-Pw-hEe"/>
                             <constraint firstItem="ZL5-Vz-yaF" firstAttribute="bottom" secondItem="ENQ-A1-7HM" secondAttribute="bottom" id="MLG-ac-lPZ"/>
+                            <constraint firstItem="ZL5-Vz-yaF" firstAttribute="trailing" secondItem="q6z-cE-Eat" secondAttribute="trailing" constant="20" id="NIa-5n-2GJ"/>
+                            <constraint firstItem="RQr-nu-bPs" firstAttribute="top" secondItem="q6z-cE-Eat" secondAttribute="bottom" constant="10" id="P4G-hB-WYc"/>
                             <constraint firstItem="ENQ-A1-7HM" firstAttribute="top" secondItem="RQr-nu-bPs" secondAttribute="bottom" id="X17-k4-Ea4"/>
                             <constraint firstItem="ENQ-A1-7HM" firstAttribute="top" secondItem="MzE-wN-dmC" secondAttribute="bottom" id="iC3-by-Q9J"/>
+                            <constraint firstItem="ddt-cD-M5N" firstAttribute="top" secondItem="q6z-cE-Eat" secondAttribute="bottom" constant="2" id="kHW-ph-r6x"/>
                             <constraint firstItem="MzE-wN-dmC" firstAttribute="trailing" secondItem="ZL5-Vz-yaF" secondAttribute="trailing" id="kZh-Mm-yT3"/>
                             <constraint firstItem="RQr-nu-bPs" firstAttribute="leading" secondItem="ZL5-Vz-yaF" secondAttribute="leading" id="oMj-2L-IRj"/>
                             <constraint firstItem="MzE-wN-dmC" firstAttribute="leading" secondItem="ZL5-Vz-yaF" secondAttribute="leading" id="v3A-wS-udp"/>
@@ -226,7 +373,13 @@
                     <connections>
                         <outlet property="activityIndicatorView" destination="MzE-wN-dmC" id="IIs-W8-TO2"/>
                         <outlet property="comicsCollectionView" destination="RQr-nu-bPs" id="GBJ-SR-sul"/>
+                        <outlet property="filterButton" destination="q6z-cE-Eat" id="azu-iF-qb6"/>
+                        <outlet property="filterView" destination="ddt-cD-M5N" id="4fp-mz-iWQ"/>
                         <outlet property="paginationIndicator" destination="ENQ-A1-7HM" id="s5F-h9-oWw"/>
+                        <outlet property="releaseLastWeekImage" destination="zZO-dV-UvW" id="ZuC-0t-DM9"/>
+                        <outlet property="releaseNextWeekImage" destination="Avi-4c-MJ5" id="GpB-DW-Fxh"/>
+                        <outlet property="releaseThisMonthImage" destination="vxT-OO-oW0" id="mh1-wT-qi0"/>
+                        <outlet property="releaseThisWeekImage" destination="dqz-Q1-uI1" id="9Zj-Oz-0Z0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qhh-nq-RuP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -255,9 +408,19 @@
     </scenes>
     <resources>
         <image name="book.fill" catalog="system" width="128" height="95"/>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
         <image name="person.3.fill" catalog="system" width="128" height="66"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

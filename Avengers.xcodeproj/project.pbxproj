@@ -25,6 +25,8 @@
 		103F7D8A2AD0285E00BD7C8C /* CharacterCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F7D892AD0285E00BD7C8C /* CharacterCollectionCell.swift */; };
 		103F7D8D2AD0823900BD7C8C /* ComicsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F7D8C2AD0823900BD7C8C /* ComicsViewModel.swift */; };
 		103F7D8F2AD0824400BD7C8C /* ComicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F7D8E2AD0824400BD7C8C /* ComicsModel.swift */; };
+		103F7D912AD1502500BD7C8C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F7D902AD1502500BD7C8C /* Extensions.swift */; };
+		103F7D932AD15B4000BD7C8C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F7D922AD15B4000BD7C8C /* Utils.swift */; };
 		D625C9A2D3C81F063733BE7B /* Pods_Avengers_AvengersUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7185D310D6388E7937CDAE7 /* Pods_Avengers_AvengersUITests.framework */; };
 		E8CF5B845CBBC79A0E64EFC0 /* Pods_Avengers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 609A8B7F0C9CCD6DD71459CA /* Pods_Avengers.framework */; };
 		EFFFD0A2E0D3A03835B2CE76 /* Pods_AvengersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82B7F03F953AF15E74730DF6 /* Pods_AvengersTests.framework */; };
@@ -70,6 +72,8 @@
 		103F7D892AD0285E00BD7C8C /* CharacterCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionCell.swift; sourceTree = "<group>"; };
 		103F7D8C2AD0823900BD7C8C /* ComicsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsViewModel.swift; sourceTree = "<group>"; };
 		103F7D8E2AD0824400BD7C8C /* ComicsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsModel.swift; sourceTree = "<group>"; };
+		103F7D902AD1502500BD7C8C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		103F7D922AD15B4000BD7C8C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		12FB65E6C5DDECBF3D75A28A /* Pods-Avengers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avengers.debug.xcconfig"; path = "Target Support Files/Pods-Avengers/Pods-Avengers.debug.xcconfig"; sourceTree = "<group>"; };
 		3450B7A35BFB9B02102313E6 /* Pods-Avengers-AvengersUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avengers-AvengersUITests.debug.xcconfig"; path = "Target Support Files/Pods-Avengers-AvengersUITests/Pods-Avengers-AvengersUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		609A8B7F0C9CCD6DD71459CA /* Pods_Avengers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Avengers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,6 +227,8 @@
 			children = (
 				103F7D842ACFDDE500BD7C8C /* Constants.swift */,
 				103F7D862ACFE2A400BD7C8C /* Encryption.swift */,
+				103F7D902AD1502500BD7C8C /* Extensions.swift */,
+				103F7D922AD15B4000BD7C8C /* Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -500,11 +506,13 @@
 				103F7D802ACFD0C400BD7C8C /* CharactersViewModel.swift in Sources */,
 				103F7D7E2ACFBFE200BD7C8C /* APIEndpoints.swift in Sources */,
 				103F7D822ACFD37C00BD7C8C /* CharactersModel.swift in Sources */,
+				103F7D932AD15B4000BD7C8C /* Utils.swift in Sources */,
 				103F7D8F2AD0824400BD7C8C /* ComicsModel.swift in Sources */,
 				103F7D8D2AD0823900BD7C8C /* ComicsViewModel.swift in Sources */,
 				103F7D872ACFE2A400BD7C8C /* Encryption.swift in Sources */,
 				103F7D772ACF18CC00BD7C8C /* ComicsViewController.swift in Sources */,
 				103F7D482ACF163E00BD7C8C /* CharactersViewController.swift in Sources */,
+				103F7D912AD1502500BD7C8C /* Extensions.swift in Sources */,
 				103F7D7C2ACF199800BD7C8C /* APIService.swift in Sources */,
 				103F7D8A2AD0285E00BD7C8C /* CharacterCollectionCell.swift in Sources */,
 				103F7D442ACF163E00BD7C8C /* AppDelegate.swift in Sources */,

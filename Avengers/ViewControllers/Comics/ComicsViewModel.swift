@@ -15,11 +15,14 @@ class ComicsViewModel {
     private var cancellables = Set<AnyCancellable>()
     @Published var comics:ComicsModel?
 
-    func getComics(limit:String,offset:String){
+    func getComics(limit:String,offset:String,dates:String){
 
         var params:[String:Any] = [String:Any]()
         params["limit"] = limit
         params["offset"] = offset
+        if !dates.isEmpty{
+            params["dateRange"] = dates
+        }
         let result = APIService.shared.sendRequest(endPoint: APIEndpoint.comicsList.url,
                                                    method: .get,
                                                    encoding: URLEncoding.queryString,
