@@ -9,7 +9,7 @@ import UIKit
 import Combine
 
 class ComicsViewController: UIViewController {
-
+    
     //MARK:Outlets
     @IBOutlet weak var comicsCollectionView: UICollectionView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
@@ -20,6 +20,7 @@ class ComicsViewController: UIViewController {
     @IBOutlet weak var releaseThisMonthImage: UIImageView!
     @IBOutlet weak var filterView: UIView!
     @IBOutlet weak var filterButton: UIButton!
+    @IBOutlet weak var noDataFoundLabel: UILabel!
     
     //MARK: Variables
     private let viewModel = ComicsViewModel()
@@ -40,6 +41,7 @@ class ComicsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setDelegates()
+        setPublishers()
     }
     override func viewWillAppear(_ animated: Bool) {
         setUI()
@@ -134,20 +136,8 @@ class ComicsViewController: UIViewController {
     func setDelegates(){
         comicsCollectionView.delegate = self
         comicsCollectionView.dataSource = self
-        
-        
-        viewModel.$comics.sink { [weak self] model in
-            guard let weakSelf = self else {return}
-            if let model = model{
-                weakSelf.isLoading = false
-                weakSelf.activityIndicatorView.isHidden = true
-                weakSelf.comics.append(contentsOf:model.data?.results ?? [])
-
-            }else{
-                weakSelf.comics.removeAll()
-            }
-        }.store(in: &cancellabels)
-        
+    }
+    func setPublishers(){
         $selectedTag.sink { [weak self] tag in
             guard let weakSelf = self else {return}
             let firstDayOfWeek = Utils.getFirstDayOfWeek() ?? Date()
@@ -180,9 +170,30 @@ class ComicsViewController: UIViewController {
             weakSelf.fetchComics(dates: weakSelf.filterDates)
         }.store(in: &cancellabels)
     }
-    
     func fetchComics(dates:String){
-        viewModel.getComics(limit: limit, offset: String(offset),dates:dates)
+        viewModel.getComics(limit: limit, offset: String(offset),dates:dates).sink {[weak self] completion in
+            guard let weakSelf = self else {return}
+            if weakSelf.offset == 0{
+                switch completion{
+                case .failure(let error):
+                    weakSelf.noDataFoundLabel.text = error.localizedDescription
+                default:
+                    Constants.printToConsole(completion)
+                }
+                weakSelf.comics.removeAll()
+                weakSelf.noDataFoundLabel.isHidden = false
+                weakSelf.activityIndicatorView.isHidden = true
+            }
+        } receiveValue: {[weak self] model in
+            guard let weakSelf = self else {return}
+            if let results = model.data?.results, !results.isEmpty{
+                weakSelf.isLoading = false
+                weakSelf.noDataFoundLabel.isHidden = true
+                weakSelf.activityIndicatorView.isHidden = true
+                weakSelf.comics.append(contentsOf:results)
+            }
+        }.store(in: &cancellabels)
+        
     }
 }
 
@@ -220,7 +231,7 @@ extension ComicsViewController:UICollectionViewDelegate,UICollectionViewDataSour
                 fetchComics(dates: filterDates)
             }
         }
-       
+        
     }
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         filterView.isHidden = true

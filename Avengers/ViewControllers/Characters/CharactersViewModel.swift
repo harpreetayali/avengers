@@ -13,33 +13,33 @@ import CryptoKit
 class CharactersViewModel {
     
     private var cancellables = Set<AnyCancellable>()
-    @Published var characters:CharactersModel?
 
-    func getCharacters(limit:String,offset:String,query:String = ""){
+    func getCharacters(limit:String,offset:String,query:String = "") -> AnyPublisher<CharactersModel,Error>{
 
-        var params:[String:Any] = [String:Any]()
-        params["limit"] = limit
-        params["offset"] = offset
-        if !query.isEmpty{
-            params["nameStartsWith"] = query
-        }
-        let result = APIService.shared.sendRequest(endPoint: APIEndpoint.characteresList.url,
-                                                   method: .get,
-                                                   encoding: URLEncoding.queryString,
-                                                   params: params,
-                                                   type: CharactersModel.self)
-        
-        result.sink { completion in
-            switch completion{
-            case .failure(let error):
-                Constants.printToConsole("Error --> \(error)")
-            case .finished:
-                Constants.printToConsole("Finished")
+        return Future<CharactersModel,Error> { promise in
+            var params:[String:Any] = [String:Any]()
+            params["limit"] = limit
+            params["offset"] = offset
+            if !query.isEmpty{
+                params["nameStartsWith"] = query
             }
-        } receiveValue: { [weak self] model in
-            guard let weakSelf = self else { return }
-            weakSelf.characters = model
-        }.store(in: &cancellables)
-
+            let result = APIService.shared.sendRequest(endPoint: APIEndpoint.characteresList.url,
+                                                       method: .get,
+                                                       encoding: URLEncoding.queryString,
+                                                       params: params,
+                                                       type: CharactersModel.self)
+            
+            result.sink { completion in
+                switch completion{
+                case .failure(let error):
+                    promise(.failure(error))
+                case .finished:
+                    Constants.printToConsole("Finished")
+                }
+            } receiveValue: { model in
+                promise(.success(model))
+            }.store(in: &self.cancellables)
+        }.eraseToAnyPublisher()
+            
     }
 }

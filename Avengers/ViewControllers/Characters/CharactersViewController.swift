@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 import SDWebImage
-
+import IQKeyboardManagerSwift
 class CharactersViewController: UIViewController {
     
     //MARK: Outlets
@@ -17,6 +17,7 @@ class CharactersViewController: UIViewController {
     @IBOutlet weak var paginationIndicator: UIActivityIndicatorView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchHistoryTableView: UITableView!
+    @IBOutlet weak var notDataFoundLabel: UILabel!
     
     //MARK: Variables
     private let viewModel = CharactersViewModel()
@@ -49,6 +50,7 @@ class CharactersViewController: UIViewController {
     func initViews(){
         searchHistory = UserDefaults.standard.stringArray(forKey: Constants.SEARCH_HISTORY)
         self.view.endEditing(true)
+        notDataFoundLabel.isHidden = true
         activityIndicator.isHidden = true
         paginationIndicator.isHidden = true
         characters.removeAll()
@@ -63,21 +65,37 @@ class CharactersViewController: UIViewController {
         
         searchHistoryTableView.delegate = self
         searchHistoryTableView.dataSource = self
-        
-        viewModel.$characters.sink { [weak self] model in
-            guard let weakSelf = self else {return}
-            if let model = model,let query = weakSelf.searchBar.searchTextField.text,!query.isEmpty{
-                weakSelf.isLoading = false
-                weakSelf.activityIndicator.isHidden = true
-                weakSelf.characters.append(contentsOf:model.data?.results ?? [])
-                weakSelf.saveHistory()
-            }else{
-                weakSelf.characters.removeAll()
-            }
-        }.store(in: &cancellabels)
     }
     func fetchCharacters(query:String = ""){
-        viewModel.getCharacters(limit: limit, offset: String(offset),query: query)
+        viewModel.getCharacters(limit: limit, offset: String(offset),query: query).sink {[weak self] completion in
+            guard let weakSelf = self else {return}
+            if weakSelf.offset == 0{
+                switch completion{
+                case .failure(let error):
+                    weakSelf.notDataFoundLabel.text = error.localizedDescription
+                default:
+                    Constants.printToConsole(completion)
+                }
+                weakSelf.characters.removeAll()
+                weakSelf.notDataFoundLabel.isHidden = false
+                weakSelf.activityIndicator.isHidden = true
+                weakSelf.searchHistoryTableView.isHidden = true
+                weakSelf.view.endEditing(true)
+            }else {
+                weakSelf.activityIndicator.isHidden = true
+            }
+        } receiveValue: { [weak self] model in
+            guard let weakSelf = self else {return}
+            if let query = weakSelf.searchBar.searchTextField.text,!query.isEmpty,
+               let result = model.data?.results, !result.isEmpty{
+                weakSelf.notDataFoundLabel.isHidden = true
+                weakSelf.isLoading = false
+                weakSelf.activityIndicator.isHidden = true
+                weakSelf.characters.append(contentsOf:result)
+                weakSelf.saveHistory()
+            }
+        }.store(in: &cancellabels)
+
     }
     
     func saveHistory(){

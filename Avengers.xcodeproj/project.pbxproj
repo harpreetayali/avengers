@@ -27,6 +27,7 @@
 		103F7D8F2AD0824400BD7C8C /* ComicsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F7D8E2AD0824400BD7C8C /* ComicsModel.swift */; };
 		103F7D912AD1502500BD7C8C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F7D902AD1502500BD7C8C /* Extensions.swift */; };
 		103F7D932AD15B4000BD7C8C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F7D922AD15B4000BD7C8C /* Utils.swift */; };
+		103F7D952AD1C84A00BD7C8C /* CharacterAPIUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103F7D942AD1C84A00BD7C8C /* CharacterAPIUnitTest.swift */; };
 		D625C9A2D3C81F063733BE7B /* Pods_Avengers_AvengersUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7185D310D6388E7937CDAE7 /* Pods_Avengers_AvengersUITests.framework */; };
 		E8CF5B845CBBC79A0E64EFC0 /* Pods_Avengers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 609A8B7F0C9CCD6DD71459CA /* Pods_Avengers.framework */; };
 		EFFFD0A2E0D3A03835B2CE76 /* Pods_AvengersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82B7F03F953AF15E74730DF6 /* Pods_AvengersTests.framework */; };
@@ -74,6 +75,7 @@
 		103F7D8E2AD0824400BD7C8C /* ComicsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsModel.swift; sourceTree = "<group>"; };
 		103F7D902AD1502500BD7C8C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		103F7D922AD15B4000BD7C8C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		103F7D942AD1C84A00BD7C8C /* CharacterAPIUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterAPIUnitTest.swift; sourceTree = "<group>"; };
 		12FB65E6C5DDECBF3D75A28A /* Pods-Avengers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avengers.debug.xcconfig"; path = "Target Support Files/Pods-Avengers/Pods-Avengers.debug.xcconfig"; sourceTree = "<group>"; };
 		3450B7A35BFB9B02102313E6 /* Pods-Avengers-AvengersUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avengers-AvengersUITests.debug.xcconfig"; path = "Target Support Files/Pods-Avengers-AvengersUITests/Pods-Avengers-AvengersUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		609A8B7F0C9CCD6DD71459CA /* Pods_Avengers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Avengers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,10 +140,10 @@
 		103F7D422ACF163E00BD7C8C /* Avengers */ = {
 			isa = PBXGroup;
 			children = (
+				103F7D782ACF192F00BD7C8C /* Delegates */,
 				103F7D832ACFDDD500BD7C8C /* Utils */,
 				103F7D7A2ACF194500BD7C8C /* API Service */,
 				103F7D792ACF193900BD7C8C /* Storyboards */,
-				103F7D782ACF192F00BD7C8C /* Delegates */,
 				103F7D732ACF189800BD7C8C /* ViewControllers */,
 				103F7D4C2ACF164000BD7C8C /* Assets.xcassets */,
 				103F7D512ACF164000BD7C8C /* Info.plist */,
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				103F7D5A2ACF164000BD7C8C /* AvengersTests.swift */,
+				103F7D942AD1C84A00BD7C8C /* CharacterAPIUnitTest.swift */,
 			);
 			path = AvengersTests;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				103F7D952AD1C84A00BD7C8C /* CharacterAPIUnitTest.swift in Sources */,
 				103F7D5B2ACF164000BD7C8C /* AvengersTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -624,7 +628,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -681,7 +685,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -762,8 +766,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 48P68MQAH7;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AvengersTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -783,8 +788,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 48P68MQAH7;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AvengersTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -803,6 +809,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 48P68MQAH7;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AvengersUITests;
@@ -822,6 +830,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 48P68MQAH7;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AvengersUITests;
