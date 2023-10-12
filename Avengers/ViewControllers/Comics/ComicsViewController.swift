@@ -173,17 +173,17 @@ class ComicsViewController: UIViewController {
     func fetchComics(dates:String){
         viewModel.getComics(limit: limit, offset: String(offset),dates:dates).sink {[weak self] completion in
             guard let weakSelf = self else {return}
-            if weakSelf.offset == 0{
+            
                 switch completion{
                 case .failure(let error):
                     weakSelf.noDataFoundLabel.text = error.localizedDescription
+                    weakSelf.comics.removeAll()
+                    weakSelf.noDataFoundLabel.isHidden = false
+                    weakSelf.activityIndicatorView.isHidden = true
                 default:
                     Constants.printToConsole(completion)
                 }
-                weakSelf.comics.removeAll()
-                weakSelf.noDataFoundLabel.isHidden = false
-                weakSelf.activityIndicatorView.isHidden = true
-            }
+             
         } receiveValue: {[weak self] model in
             guard let weakSelf = self else {return}
             if let results = model.data?.results, !results.isEmpty{
@@ -191,6 +191,9 @@ class ComicsViewController: UIViewController {
                 weakSelf.noDataFoundLabel.isHidden = true
                 weakSelf.activityIndicatorView.isHidden = true
                 weakSelf.comics.append(contentsOf:results)
+                
+            }else{
+                weakSelf.activityIndicatorView.isHidden = true
             }
         }.store(in: &cancellabels)
         

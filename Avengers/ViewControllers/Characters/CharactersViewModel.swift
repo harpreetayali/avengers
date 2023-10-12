@@ -13,13 +13,19 @@ import CryptoKit
 class CharactersViewModel {
     
     private var cancellables = Set<AnyCancellable>()
-
+    private var limit = "10"
+    private var offset = 0
+    var searchHistory:[String] {
+        get {UserDefaults.standard.stringArray(forKey: Constants.SEARCH_HISTORY) ?? [] }
+        set{UserDefaults.standard.setValue(newValue, forKey: Constants.SEARCH_HISTORY)}
+    }
     func getCharacters(limit:String,offset:String,query:String = "") -> AnyPublisher<CharactersModel,Error>{
 
-        return Future<CharactersModel,Error> { promise in
+        return Future<CharactersModel,Error> {[weak self] promise in
+            guard let weakSelf = self else { return }
             var params:[String:Any] = [String:Any]()
-            params["limit"] = limit
-            params["offset"] = offset
+            params["limit"] = weakSelf.limit
+            params["offset"] = weakSelf.offset
             if !query.isEmpty{
                 params["nameStartsWith"] = query
             }
@@ -38,8 +44,16 @@ class CharactersViewModel {
                 }
             } receiveValue: { model in
                 promise(.success(model))
-            }.store(in: &self.cancellables)
+            }.store(in: &weakSelf.cancellables)
         }.eraseToAnyPublisher()
             
+    }
+    
+    func saveHistory(query:String){
+        var newHistory = searchHistory
+        if !newHistory.contains(query){
+            newHistory.append(query)
+            self.searchHistory = newHistory
+        }
     }
 }

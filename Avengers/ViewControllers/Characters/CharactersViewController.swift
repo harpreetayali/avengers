@@ -32,7 +32,6 @@ class CharactersViewController: UIViewController {
     private var limit = "20"
     private var offset = 0
     private var isLoading:Bool = false
-    var searchHistory:[String]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +47,6 @@ class CharactersViewController: UIViewController {
     }
     //MARK: User Defined functions
     func initViews(){
-        searchHistory = UserDefaults.standard.stringArray(forKey: Constants.SEARCH_HISTORY)
         self.view.endEditing(true)
         notDataFoundLabel.isHidden = true
         activityIndicator.isHidden = true
@@ -73,16 +71,16 @@ class CharactersViewController: UIViewController {
                 switch completion{
                 case .failure(let error):
                     weakSelf.notDataFoundLabel.text = error.localizedDescription
+                    weakSelf.characters.removeAll()
+                    weakSelf.notDataFoundLabel.isHidden = false
+                    weakSelf.activityIndicator.isHidden = true
+                    weakSelf.searchHistoryTableView.isHidden = true
+                    weakSelf.view.endEditing(true)
                 default:
                     Constants.printToConsole(completion)
                 }
-                weakSelf.characters.removeAll()
-                weakSelf.notDataFoundLabel.isHidden = false
-                weakSelf.activityIndicator.isHidden = true
-                weakSelf.searchHistoryTableView.isHidden = true
-                weakSelf.view.endEditing(true)
-            }else {
-                weakSelf.activityIndicator.isHidden = true
+                
+                
             }
         } receiveValue: { [weak self] model in
             guard let weakSelf = self else {return}
@@ -92,27 +90,15 @@ class CharactersViewController: UIViewController {
                 weakSelf.isLoading = false
                 weakSelf.activityIndicator.isHidden = true
                 weakSelf.characters.append(contentsOf:result)
-                weakSelf.saveHistory()
+                let query = weakSelf.searchBar.searchTextField.text ?? ""
+                weakSelf.viewModel.saveHistory(query:query)
+                weakSelf.searchHistoryTableView.isHidden = true
+                weakSelf.searchHistoryTableView.reloadData()
+            }else {
+                weakSelf.activityIndicator.isHidden = true
             }
         }.store(in: &cancellabels)
 
-    }
-    
-    func saveHistory(){
-        searchHistoryTableView.isHidden = true
-        let query = searchBar.searchTextField.text ?? ""
-        if let searchHistory = searchHistory{
-            var newHistory = searchHistory
-            if !newHistory.contains(query){
-                newHistory.append(query)
-                self.searchHistory = newHistory
-                searchHistoryTableView.reloadData()
-                UserDefaults.standard.setValue(newHistory, forKey: Constants.SEARCH_HISTORY)
-            }
-        }else{
-            let history = [query]
-            UserDefaults.standard.setValue(history, forKey: Constants.SEARCH_HISTORY)
-        }
     }
     
     
@@ -182,17 +168,17 @@ extension CharactersViewController:UISearchBarDelegate{
 //MARK: History Table View
 extension CharactersViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchHistory?.count ?? 0
+        return viewModel.searchHistory.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
         if #available(iOS 14.0, *) {
             var content = cell?.defaultContentConfiguration()
-            content?.text = searchHistory?[indexPath.row]
+            content?.text = viewModel.searchHistory[indexPath.row]
             cell?.contentConfiguration = content
         } else {
-            cell?.textLabel?.text = searchHistory?[indexPath.row]
+            cell?.textLabel?.text = viewModel.searchHistory[indexPath.row]
         }
         
         return cell ?? UITableViewCell()
